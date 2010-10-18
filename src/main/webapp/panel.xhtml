@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      template="/WEB-INF/templates/layout.xhtml">
+    <h:head>
+       
+
+    </h:head>
+    <ui:define name="content">
+        <h:form>
+            <p:growl id="growl" showDetail="true" />
+            <p:dashboard id="board" disabled="true" model="#{dashboardBean.model}" 
+					reorderListener="#{dashboardBean.handleReorder}" onReorderUpdate="growl" >
+			
+           <p:panel style="width:450px; margin: 50px" id="sports" header="Aktualne Zlecenia" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl"  widgetVar="sportsWidget">
+						<h:outputText value="Sports Content" />
+						<f:facet name="options">
+							<p:menu>
+								<p:submenu label="Settings">
+									<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="sportsWidget.toggle()"/>
+									<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="sportsWidget.close()"/>
+								</p:submenu>
+							</p:menu>
+						</f:facet>
+					</p:panel>
+					
+					<p:panel id="finance" style="width:450px; margin: 50px" header="Płatności" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl"  widgetVar="financeWidget">
+						<h:outputText value="Finance Content" />
+						<f:facet name="options">
+							<p:menu>
+								<p:submenu label="Settings">
+									<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="financeWidget.toggle()"/>
+									<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="financeWidget.close()"/>
+								</p:submenu>
+							</p:menu>
+						</f:facet>
+					</p:panel>
+
+					<p:panel id="lifestyle" style="width:450px; margin: 50px" header="Kalendarz" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="lifestyleWidget">
+						<h:outputText value="Lifestyle Content"  />
+                                                <p:schedule locale="pl" value="#{scheduleController.eventModel}" editable="false" />
+						<f:facet name="options">
+							<p:menu>
+								<p:submenu label="Settings">
+									<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="lifestyleWidget.toggle()"/>
+									<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="lifestyleWidget.close()"/>
+								</p:submenu>
+							</p:menu>
+						</f:facet>
+					</p:panel>
+			
+					<p:panel id="weather" style="width:450px; margin: 50px" header="Kolejka Email" toggleable="true" closable="true"
+							closeListener="#{panelBean.handleClose}" onCloseUpdate="growl"
+							toggleListener="#{panelBean.handleToggle}" onToggleUpdate="growl" widgetVar="weatherWidget">
+						<h:outputText value="Weather Content" />
+						<f:facet name="options">
+						<p:menu>
+							<p:submenu label="Settings">
+								<p:menuitem value="Toggle" url="#" icon="/images/update.png" onclick="weatherWidget.toggle()"/>
+								<p:menuitem value="Remove" url="#" icon="/images/delete.png" onclick="weatherWidget.close()"/>
+							</p:submenu>
+						</p:menu>
+					</f:facet>
+					</p:panel>
+					
+				</p:dashboard>
+				
+				<div style="clear:both" />
+        </h:form>
+    </ui:define>
+</ui:composition>
+

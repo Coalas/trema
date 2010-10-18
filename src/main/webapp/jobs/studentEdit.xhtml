@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<f:metadata>
+			<f:viewParam name="id" value="#{studentHome.id}" />
+			<f:event type="preRenderView"
+				listener="#{studentHome.initConversation}" />
+		</f:metadata>
+		<h:form>
+
+			<h:outputText value="ID" styleClass="caption"
+				rendered="#{studentHome.managed}" />
+			<h:outputText value="#{studentHome.instance.id}" styleClass="value"
+				rendered="#{studentHome.managed}" />
+
+
+
+			<h:outputText value="First Name" styleClass="caption" />
+			<div class="value"><h:inputText
+				value="#{studentHome.instance.firstName}" id="firstName" /> <h:message
+				for="firstName" styleClass="errorMessage" /></div>
+
+
+			<h:outputText value="Last Name" styleClass="caption" />
+			<div class="value"><h:inputText
+				value="#{studentHome.instance.lastName}" id="lastName" /> <h:message
+				for="lastName" styleClass="errorMessage" /></div>
+
+
+			<h:outputText value="GPA" styleClass="caption" />
+			<div class="value"><h:inputText
+				value="#{studentHome.instance.gpa}" id="gpa" /> <h:message for="gpa"
+				styleClass="errorMessage" /></div>
+
+			<h:commandButton value="Save" action="#{studentHome.save}"
+				style="margin-right : 8px" />
+			<h:commandButton value="Cancel" action="#{studentHome.cancel}"
+				immediate="true" />
+			<h:commandButton value="Delete" action="#{studentHome.delete}" style="margin-left : 240px"/>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

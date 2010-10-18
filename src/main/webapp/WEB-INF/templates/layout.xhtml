@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.prime.com.tr/ui">
+        
+<f:view contentType="text/html">
+<h:head>
+        <title>
+                <ui:insert name="title">PrimeFaces ShowCase</ui:insert>
+        </title>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/resources/cupertino/skin.css" />
+
+        <h:outputStylesheet name="cupertino/skin.css" />
+        <style type="text/css">
+            .ui-layout-unit-top .ui-layout-bd {
+	border: 0;}
+            .ui-menu {border: 0;}
+                .ui-widget {
+                        font-size: 75%;
+                }
+                
+                .themeMenu {
+                        overflow: auto;
+                        height:300px;
+                        width:200px;
+                }
+        </style>
+</h:head>
+
+<h:body class="yui-skin-sam">
+        
+        <p:layout fullPage="true">
+        
+                <p:layoutUnit position="top" height="50" resizable="false" closable="false" collapsible="false">
+                        <h:outputText value="CRM" style="font-size:36px;"/>
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="bottom" height="20" resizable="false" closable="false" collapsible="false">
+                        <h:outputText value="Copyright" />
+                </p:layoutUnit>
+                
+                <p:layoutUnit position="left" width="210" header="MENU" resizable="false" closable="false" collapsible="true" >
+                        <h:form id="themeForm">
+                                <p:menu style="width:190px">
+					<p:submenu label="Kontakty">
+						<p:menuitem value="Klienci" ajax="false" actionListener="#{buttonBean.save}" update="messages" icon="resources/images/menu/usergroup.png"/>
+<!--                                                <p:menuitem value="Partnerzy" ajax="false" actionListener="#{buttonBean.save}" update="messages" icon="resources/images/save.png"/>-->
+						<p:menuitem value="Baza Firm/ Instytucji" ajax="false" actionListener="#{buttonBean.update}" update="messages" icon="resources/images/menu/company.png"/>
+					</p:submenu>
+					<p:submenu label="Praca">
+						<p:menuitem value="Zlecenia" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="resources/images/menu/music.png"/>
+                                                <p:menuitem value="Dokumenty" actionListener="#{buttonBean.delete}" update="messages" ajax="false" icon="resources/images/menu/briefcase.png"/>
+					</p:submenu>
+                                    <p:submenu label="Mailing">
+						<p:menuitem value="Kampanie" url="http://www.primefaces.org" icon="resources/images/menu/twitter.png"/>
+                                                <p:menuitem value="Wiadomości" url="http://www.primefaces.org" icon="resources/images/menu/mail.png"/>
+                                                
+					</p:submenu>
+					<p:submenu label="Księgowość">
+						<p:menuitem value="Faktury" url="http://www.primefaces.org" icon="resources/images/menu/report.png"/>
+                                                <p:menuitem value="Płatności Klientów" url="http://www.primefaces.org" icon="resources/images/menu/wallet.png"/>
+                                                <p:menuitem value="Rozliczenia zleceń" url="http://www.primefaces.org" icon="resources/images/menu/accounting.png"/>
+						<p:menuitem value="Wydatki" url="#{request.contextPath}/touch" icon="resources/images/menu/buy.png"/>
+					</p:submenu>
+                                    
+                                    <p:submenu label="Raporty" >
+						<p:menuitem value="Zlecenia" url="http://www.primefaces.org" icon="resources/images/menu/chart.png"/>
+                                                <p:menuitem value="Klienci" url="http://www.primefaces.org" icon="resources/images/menu/goodmark.png"/>
+                                                <p:menuitem value="Dochody/Wydatki" url="http://www.primefaces.org" icon="resources/images/menu/sum.png"/>
+					
+					</p:submenu>
+                                    <p:submenu label="Ustawienia">
+						<p:menuitem value="Użytkownicy" url="http://www.primefaces.org" icon="resources/images/menu/boss.png"/>
+                                                
+					</p:submenu>
+				</p:menu>                                                        
+                                <ui:insert name="left"></ui:insert>
+                                     
+        
+                        </h:form>               
+                </p:layoutUnit>
+                
+<!--                <p:layoutUnit position="right" width="200" header="Right" resizable="true" closable="true" collapsible="true">
+                        <h:outputText value="East unit content." />
+                </p:layoutUnit>-->
+                
+                <p:layoutUnit position="center" scrollable="true">
+                <ui:insert name="content">Content</ui:insert>
+                </p:layoutUnit>
+                
+        </p:layout>
+        
+</h:body>
+
+</f:view>
+
+</html>

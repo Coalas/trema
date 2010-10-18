@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<h1>Courses</h1>
+		<h:form>
+			<h:dataTable value="#{students}" var="v_student"
+				styleClass="dataTable" rowClasses="odd,even">
+				<h:column>
+					<f:facet name="header">Id
+				</f:facet>
+				#{v_student.id}
+			</h:column>
+
+				<h:column>
+					<f:facet name="header">Name
+				</f:facet>
+					<h:link outcome="studentView.jsf?id=#{v_student.id}"
+						value="#{v_student.name}" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+<h:link outcome="studentEdit.jsf" value="Create Student" />
+
+	</ui:define>
+</ui:composition>
+
